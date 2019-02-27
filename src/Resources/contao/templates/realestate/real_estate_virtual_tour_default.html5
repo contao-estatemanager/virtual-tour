@@ -1,0 +1,3 @@
+<div class="virtual-tour-link">
+    <a href="<?=$this->link?>" target="_blank" rel="nofollow"><?=$this->label?></a>
+</div>

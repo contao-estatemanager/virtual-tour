@@ -1,5 +1,5 @@
 {
-  "name":"oveleon/contao-immo-manager-virtualtour-bundle",
+  "name":"oveleon/contao-immo-manager-virtual-tour-bundle",
   "type":"contao-bundle",
   "description":"Manage real estate properties in Cotnao.",
   "keywords":["contao","immo-manager","immo","real-estate","real estate","estate","property", "virtualtour"],

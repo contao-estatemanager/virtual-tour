@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_module.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="tl_module.virtual_tour_legend">
+        <source>Virtual tour</source>
+        <target>Virtueller-Rundgang</target>
+      </trans-unit>
+      <trans-unit id="tl_module.addVirtualTour.0">
+        <source>Show virtual tour</source>
+        <target>Virtuellen Rundgang hinzufügen</target>
+      </trans-unit>
+      <trans-unit id="tl_module.addVirtualTour.1">
+        <source>Add a virtual tour button</source>
+        <target>Fügt, sofern vorhanden, einen Link zum virtuellen Rundgang hinzu</target>
+      </trans-unit>
+      <trans-unit id="tl_module.realEstateVirtualTourTemplate.0">
+        <source>Template virtueller Rundgang</source>
+        <target>Template virtueller Rundgang</target>
+      </trans-unit>
+      <trans-unit id="tl_module.realEstateVirtualTourTemplate.1">
+        <source>Here you can overwrite the default template for the virtual tours</source>
+        <target>Hier können Sie das Standard-Template für virtuelle Rundgänge überschreiben</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
