@@ -15,7 +15,7 @@ use Oveleon\ContaoImmoManagerBundle\Translator;
 class VirtualTour
 {
     /**
-     * Parse real estate template and add watchlist extension
+     * Parse real estate template and add video extension
      *
      * @param $objTemplate
      * @param $realEstate
@@ -47,9 +47,10 @@ class VirtualTour
     }
 
     /**
-     * Parse real estate template and add watchlist extension
+     * Parse virtual tour gallery template and add them to slides
      *
      * @param $objTemplate
+     * @param $arrSlides
      * @param $realEstate
      * @param $context
      */
