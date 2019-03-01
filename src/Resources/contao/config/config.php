@@ -8,7 +8,7 @@
  */
 
 // Add expose module
-array_insert($GLOBALS['FE_EXPOSE_MOD']['miscellaneous'], -1, array
+array_insert($GLOBALS['FE_EXPOSE_MOD']['media'], -1, array
 (
     'virtualTour' => '\\Oveleon\\ContaoImmoManagerVirtualTourBundle\\ExposeModuleVirtualTour',
 ));
