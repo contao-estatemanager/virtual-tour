@@ -4,29 +4,29 @@
     <body>
       <trans-unit id="tl_expose_module.virtual_tour_legend">
         <source>Virtual tour</source>
-        <target>Virtueller-Rundgang</target>
+        <target>Virtueller Rundgang-Einstellungen</target>
       </trans-unit>
-      <trans-unit id="tl_expose_module.addVirtualTour.0">
-        <source>Show virtual tour</source>
-        <target>Virtuellen Rundgang hinzufügen</target>
+      <trans-unit id="tl_expose_module.addVirtualTourPreviewImage.0">
+        <source>Vorschaubild verwenden</source>
+        <target>Vorschaubild verwenden</target>
       </trans-unit>
-      <trans-unit id="tl_expose_module.addVirtualTour.1">
-        <source>Add a virtual tour to the gallery</source>
-        <target>Fügt den virtuellen Rundgang, sofern vorhanden, in der Galerie hinzu</target>
+      <trans-unit id="tl_expose_module.addVirtualTourPreviewImage.1">
+        <source>Gibt ein Vorschaubild aus. Sofern kein eigenes Bild ausgewählt wurde, wird das Titelbild der Immobolie ausgegeben</source>
+        <target>Gibt ein Vorschaubild aus. Sofern kein eigenes Bild ausgewählt wurde, wird das Titelbild der Immobolie ausgegeben</target>
       </trans-unit>
-      <trans-unit id="tl_expose_module.virtualTourPosition.0">
-        <source>Insert at position</source>
-        <target>An Position einfügen</target>
+      <trans-unit id="tl_expose_module.virtualTourPreviewImage.0">
+        <source>Eigenes Vorschaubild</source>
+        <target>Eigenes Vorschaubild</target>
       </trans-unit>
-      <trans-unit id="tl_expose_module.virtualTourPosition.1">
-        <source>Indicate the position of the slide</source>
-        <target>Geben Sie die Position an, an welcher Stelle die virtuelle Tour ausgegeben werden soll</target>
+      <trans-unit id="tl_expose_module.virtualTourPreviewImage.1">
+        <source>Hier haben Sie die Möglichkeit ein eigenes Vorschaubild zu definieren</source>
+        <target>Hier haben Sie die Möglichkeit ein eigenes Vorschaubild zu definieren</target>
       </trans-unit>
-      <trans-unit id="tl_expose_module.virtualTourTemplate.0">
-        <source>Individuelles Template für virtuelle Rungänge</source>
-        <target>Individuelles Template für virtuelle Rungänge</target>
+      <trans-unit id="tl_expose_module.virtualTourGalleryTemplate.0">
+        <source>Individuelles virtuelle Rungänge-Template</source>
+        <target>Individuelles virtuelle Rungänge-Template</target>
       </trans-unit>
-      <trans-unit id="tl_expose_module.virtualTourTemplate.1">
+      <trans-unit id="tl_expose_module.virtualTourGalleryTemplate.1">
         <source>Hier können Sie das Standard-Template überschreiben.</source>
         <target>Hier können Sie das Standard-Template überschreiben.</target>
       </trans-unit>

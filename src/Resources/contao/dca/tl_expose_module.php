@@ -8,12 +8,12 @@
  */
 
 // Add a new selector field
-$GLOBALS['TL_DCA']['tl_expose_module']['palettes']['__selector__'][] = 'addVirtualTour';
+$GLOBALS['TL_DCA']['tl_expose_module']['palettes']['__selector__'][] = 'addVirtualTourPreviewImage';
 
 // Add field to subpalettes
 array_insert($GLOBALS['TL_DCA']['tl_expose_module']['subpalettes'], 0, array
 (
-    'addVirtualTour' => 'virtualTourPosition'
+    'addVirtualTourPreviewImage' => 'virtualTourPreviewImage'
 ));
 
 // Add field
@@ -24,22 +24,20 @@ array_insert($GLOBALS['TL_DCA']['tl_expose_module']['palettes'], -1, array
 
 // Add fields
 array_insert($GLOBALS['TL_DCA']['tl_expose_module']['fields'], -1, array(
-    'addVirtualTour'  => array
+    'addVirtualTourPreviewImage'  => array
     (
-        'label'                     => &$GLOBALS['TL_LANG']['tl_expose_module']['addVirtualTour'],
+        'label'                     => &$GLOBALS['TL_LANG']['tl_expose_module']['addVirtualTourPreviewImage'],
         'inputType'                 => 'checkbox',
         'eval'                      => array('tl_class' => 'w50 m12', 'submitOnChange'=>true),
         'sql'                       => "char(1) NOT NULL default '0'",
     ),
-    'virtualTourPosition' => array
+    'virtualTourPreviewImage' => array
     (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['virtualTourPosition'],
+        'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['virtualTourPreviewImage'],
         'exclude'                 => true,
-        'inputType'               => 'select',
-        'options'                 => array('first_pos', 'second_pos', 'last_pos'),
-        'eval'                    => array('tl_class'=>'w50'),
-        'reference'               => &$GLOBALS['TL_LANG']['FMD'],
-        'sql'                     => "varchar(16) NOT NULL default ''"
+        'inputType'               => 'fileTree',
+        'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'tl_class'=>'clr'),
+        'sql'                     => "binary(16) NULL"
     ),
     'virtualTourTemplate' => array
     (
@@ -68,10 +66,15 @@ array_insert($GLOBALS['TL_DCA']['tl_expose_module']['fields']['statusTokens']['o
     'virtualTour'
 ));
 
+// Extend immo manager expose module gallery options
+array_insert($GLOBALS['TL_DCA']['tl_expose_module']['fields']['galleryModules']['options'], -1, array(
+    'virtualTour'
+));
+
 // Extend the gallery palettes
 Contao\CoreBundle\DataContainer\PaletteManipulator::create()
     ->addLegend('virtual_tour_legend', 'image_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_BEFORE)
-    ->addField(array('addVirtualTour'), 'virtual_tour_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
+    ->addField(array('addVirtualTourPreviewImage'), 'virtual_tour_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
     ->addField(array('virtualTourGalleryTemplate'), 'template_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('gallery', 'tl_expose_module')
 ;

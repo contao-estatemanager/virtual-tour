@@ -1,0 +1,27 @@
+<script>
+    /**
+     * Add virtual tour support for expose module gallery
+     */
+    // bind preview image click
+    if(!!document.querySelector('figure.preview-image.virtual-tour')) {
+        var previewButton = document.querySelectorAll('figure.preview-image.virtual-tour');
+
+        for (var i=0; i<previewButton.length; i++){
+            previewButton[i].addEventListener('click', onClickVirtualTourPreviewImage);
+        }
+    }
+
+    function onClickVirtualTourPreviewImage(e) {
+        e.preventDefault();
+
+        var iframe = this.nextElementSibling;
+
+        if(iframe.nodeName === 'IFRAME') {
+            iframe.setAttribute("src", iframe.getAttribute('data-src'));
+            iframe.removeAttribute("data-src");
+
+            this.classList.add('is-clicked');
+            this.removeEventListener('click', onClickVirtualTourPreviewImage);
+        }
+    }
+</script>
