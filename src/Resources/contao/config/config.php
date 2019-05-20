@@ -7,14 +7,19 @@
  * @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
  */
 
-// Add expose module
-array_insert($GLOBALS['FE_EXPOSE_MOD']['media'], -1, array
-(
-    'virtualTour' => '\\Oveleon\\ContaoImmoManagerVirtualTourBundle\\ExposeModuleVirtualTour',
-));
+// IMMOMANAGER
+$GLOBALS['TL_IMMOMANAGER_ADDONS'][] = array('Oveleon\\ContaoImmoManagerVirtualTourBundle', 'AddonManager');
 
-// HOOKS
-$GLOBALS['TL_HOOKS']['parseRealEstate'][] = array('Oveleon\\ContaoImmoManagerVirtualTourBundle\\VirtualTour', 'parseRealEstate');
-$GLOBALS['TL_HOOKS']['parseRealEstate'][] = array('Oveleon\\ContaoImmoManagerVirtualTourBundle\\VirtualTour', 'addStatusToken');
-$GLOBALS['TL_HOOKS']['parseSlideExposeGallery'][] = array('Oveleon\\ContaoImmoManagerVirtualTourBundle\\VirtualTour', 'parseGallerySlide');
-$GLOBALS['TL_HOOKS']['compileExposeStatusToken'][] = array('Oveleon\\ContaoImmoManagerVirtualTourBundle\\VirtualTour', 'addStatusToken');
+if(Oveleon\ContaoImmoManagerVirtualTourBundle\AddonManager::valid()) {
+    // Add expose module
+    array_insert($GLOBALS['FE_EXPOSE_MOD']['media'], -1, array
+    (
+        'virtualTour' => '\\Oveleon\\ContaoImmoManagerVirtualTourBundle\\ExposeModuleVirtualTour',
+    ));
+
+    // HOOKS
+    $GLOBALS['TL_HOOKS']['parseRealEstate'][] = array('Oveleon\\ContaoImmoManagerVirtualTourBundle\\VirtualTour', 'parseRealEstate');
+    $GLOBALS['TL_HOOKS']['parseRealEstate'][] = array('Oveleon\\ContaoImmoManagerVirtualTourBundle\\VirtualTour', 'addStatusToken');
+    $GLOBALS['TL_HOOKS']['parseSlideExposeGallery'][] = array('Oveleon\\ContaoImmoManagerVirtualTourBundle\\VirtualTour', 'parseGallerySlide');
+    $GLOBALS['TL_HOOKS']['compileExposeStatusToken'][] = array('Oveleon\\ContaoImmoManagerVirtualTourBundle\\VirtualTour', 'addStatusToken');
+}
