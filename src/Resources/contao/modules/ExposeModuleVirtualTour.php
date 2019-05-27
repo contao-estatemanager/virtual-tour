@@ -1,16 +1,17 @@
 <?php
 /**
- * This file is part of Oveleon ImmoManager.
+ * This file is part of Contao EstateManager.
  *
- * @link      https://github.com/oveleon/contao-immo-manager-bundle
- * @copyright Copyright (c) 2018-2019  Oveleon GbR (https://www.oveleon.de)
- * @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
+ * @link      https://www.contao-estatemanager.com/
+ * @source    https://github.com/contao-estatemanager/virtual-tour
+ * @copyright Copyright (c) 2019  Oveleon GbR (https://www.oveleon.de)
+ * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
-namespace Oveleon\ContaoImmoManagerVirtualTourBundle;
+namespace ContaoEstateManager\VirtualTour;
 
-use Oveleon\ContaoImmoManagerBundle\ExposeModule;
-use Oveleon\ContaoImmoManagerBundle\Translator;
+use ContaoEstateManager\ExposeModule;
+use ContaoEstateManager\Translator;
 
 /**
  * Expose module "virtual tour".

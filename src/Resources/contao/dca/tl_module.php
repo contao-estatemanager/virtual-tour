@@ -1,13 +1,13 @@
 <?php
 /**
- * This file is part of Oveleon ImmoManager.
+ * This file is part of Contao EstateManager.
  *
- * @link      https://github.com/oveleon/contao-immo-manager-bundle
- * @copyright Copyright (c) 2018-2019  Oveleon GbR (https://www.oveleon.de)
- * @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
+ * @link      https://www.contao-estatemanager.com/
+ * @source    https://github.com/contao-estatemanager/virtual-tour
+ * @copyright Copyright (c) 2019  Oveleon GbR (https://www.oveleon.de)
+ * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
-
-if(Oveleon\ContaoImmoManagerVirtualTourBundle\AddonManager::valid()){
+if(ContaoEstateManager\VirtualTour\AddonManager::valid()){
     // Add field
     array_insert($GLOBALS['TL_DCA']['tl_module']['fields'], -1, array(
         'addVirtualTour'  => array
@@ -22,13 +22,13 @@ if(Oveleon\ContaoImmoManagerVirtualTourBundle\AddonManager::valid()){
             'default'                 => 'real_estate_virtual_tour_default',
             'exclude'                 => true,
             'inputType'               => 'select',
-            'options_callback'        => array('tl_module_immo_manager_virtual_tour', 'getRealEstateVirtualTourTemplates'),
+            'options_callback'        => array('tl_module_estate_manager_virtual_tour', 'getRealEstateVirtualTourTemplates'),
             'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "varchar(64) NOT NULL default ''"
         )
     ));
 
-    // Extend immo manager statusTokens field options
+    // Extend estate manager statusTokens field options
     array_insert($GLOBALS['TL_DCA']['tl_module']['fields']['statusTokens']['options'], -1, array(
         'virtualTour'
     ));
@@ -47,7 +47,7 @@ if(Oveleon\ContaoImmoManagerVirtualTourBundle\AddonManager::valid()){
  *
  * @author Daniele Sciannimanica <daniele@oveleon.de>
  */
-class tl_module_immo_manager_virtual_tour extends Backend
+class tl_module_estate_manager_virtual_tour extends Backend
 {
 
     /**
