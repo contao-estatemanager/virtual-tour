@@ -39,6 +39,7 @@ if(ContaoEstateManager\VirtualTour\AddonManager::valid()){
         ->addField(array('addVirtualTour'), 'virtual_tour_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
         ->addField(array('realEstateVirtualTourTemplate'), 'template_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
         ->applyToPalette('realEstateList', 'tl_module')
+        ->applyToPalette('realEstateResultList', 'tl_module')
     ;
 }
 
