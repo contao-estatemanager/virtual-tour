@@ -4,7 +4,7 @@
     <body>
       <trans-unit id="tl_expose_module.virtual_tour_legend">
         <source>Virtual tour</source>
-        <target>Virtueller Rundgang-Einstellungen</target>
+        <target>Virtueller-Rundgang Einstellungen</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.addVirtualTourPreviewImage.0">
         <source>Vorschaubild verwenden</source>
@@ -23,10 +23,18 @@
         <target>Hier haben Sie die Möglichkeit ein eigenes Vorschaubild zu definieren</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.virtualTourGalleryTemplate.0">
-        <source>Individuelles virtuelle Rungänge-Template</source>
-        <target>Individuelles virtuelle Rungänge-Template</target>
+        <source>Virtuelle-Rungänge Galerie-Template</source>
+        <target>Virtuelle-Rungänge Galerie-Template</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.virtualTourGalleryTemplate.1">
+        <source>Hier können Sie das Standard-Template überschreiben.</source>
+        <target>Hier können Sie das Standard-Template überschreiben.</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.virtualTourTemplate.0">
+        <source>Virtuelle-Rungänge Template</source>
+        <target>Virtuelle-Rungänge Template</target>
+      </trans-unit>
+      <trans-unit id="tl_expose_module.virtualTourTemplate.1">
         <source>Hier können Sie das Standard-Template überschreiben.</source>
         <target>Hier können Sie das Standard-Template überschreiben.</target>
       </trans-unit>
