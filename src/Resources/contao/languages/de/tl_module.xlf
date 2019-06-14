@@ -15,12 +15,12 @@
         <target>Fügt, sofern vorhanden, einen Link zum virtuellen Rundgang hinzu</target>
       </trans-unit>
       <trans-unit id="tl_module.realEstateVirtualTourTemplate.0">
-        <source>Template virtueller Rundgang</source>
-        <target>Template virtueller Rundgang</target>
+        <source>Real Estate Template Extension: Virtual Tour</source>
+        <target>Immobilien Template Erweiterung: Virtueller Rundgang</target>
       </trans-unit>
       <trans-unit id="tl_module.realEstateVirtualTourTemplate.1">
-        <source>Here you can overwrite the default template for the virtual tours</source>
-        <target>Hier können Sie das Standard-Template für virtuelle Rundgänge überschreiben</target>
+        <source>Here you can overwrite the default template for virtual tours within a real estate template.</source>
+        <target>Hier können Sie das Standard-Template für virtuelle Rundgänge innerhalb eines Immobilien Templates überschreiben</target>
       </trans-unit>
     </body>
   </file>
