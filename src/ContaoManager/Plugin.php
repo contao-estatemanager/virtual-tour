@@ -26,7 +26,7 @@ class Plugin implements BundlePluginInterface
     public function getBundles(ParserInterface $parser): array
     {
         return [
-            BundleConfig::create(ContaoImmoManagerVirtualTourBundle::class)
+            BundleConfig::create(EstateManagerVirtualTour::class)
                 ->setLoadAfter([ContaoCoreBundle::class, EstateManager::class])
                 ->setReplace(['estatemanager-virtual-tour']),
         ];
