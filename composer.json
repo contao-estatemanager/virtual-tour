@@ -15,7 +15,7 @@
   "require":{
     "php":">=7.1",
     "contao/core-bundle":"^4.4",
-    "oveleon/contao-immo-manager-bundle": "*"
+    "contao-estatemanager/core": "*"
   },
   "require-dev": {
     "contao/manager-plugin": "^2.0"

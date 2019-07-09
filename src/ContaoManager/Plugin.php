@@ -9,6 +9,7 @@
 
 declare(strict_types=1);
 
+
 namespace Oveleon\ContaoImmoManagerVirtualTourBundle\ContaoManager;
 
 use Contao\CoreBundle\ContaoCoreBundle;
@@ -26,8 +27,8 @@ class Plugin implements BundlePluginInterface
     {
         return [
             BundleConfig::create(ContaoImmoManagerVirtualTourBundle::class)
-                ->setLoadAfter([ContaoCoreBundle::class])
-                ->setReplace(['immo-manager-virtual-tour']),
+                ->setLoadAfter([ContaoCoreBundle::class, EstateManager::class])
+                ->setReplace(['estatemanager-virtual-tour']),
         ];
     }
 }
