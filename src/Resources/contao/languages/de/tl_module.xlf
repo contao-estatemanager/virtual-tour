@@ -2,10 +2,6 @@
 <xliff version="1.1">
   <file datatype="php" original="src/Resources/contao/languages/en/tl_module.php" source-language="en" target-language="de">
     <body>
-      <trans-unit id="tl_module.virtual_tour_legend">
-        <source>Virtual tour</source>
-        <target>Virtueller-Rundgang</target>
-      </trans-unit>
       <trans-unit id="tl_module.addVirtualTour.0">
         <source>Show virtual tour</source>
         <target>Virtuellen Rundgang hinzufügen</target>
@@ -15,12 +11,12 @@
         <target>Fügt, sofern vorhanden, einen Link zum virtuellen Rundgang hinzu</target>
       </trans-unit>
       <trans-unit id="tl_module.realEstateVirtualTourTemplate.0">
-        <source>Template virtueller Rundgang</source>
-        <target>Template virtueller Rundgang</target>
+        <source>Real Estate Template Extension: Virtual Tour</source>
+        <target>Immobilien Template Erweiterung: Virtueller Rundgang</target>
       </trans-unit>
       <trans-unit id="tl_module.realEstateVirtualTourTemplate.1">
-        <source>Here you can overwrite the default template for the virtual tours</source>
-        <target>Hier können Sie das Standard-Template für virtuelle Rundgänge überschreiben</target>
+        <source>Here you can overwrite the default template for virtual tours within a real estate template.</source>
+        <target>Hier können Sie das Standard-Template für virtuelle Rundgänge innerhalb eines Immobilien Templates überschreiben</target>
       </trans-unit>
     </body>
   </file>
