@@ -58,81 +58,81 @@ class VirtualTour
     {
         if ($module === 'virtualTour')
         {
-            $arrLinks = static::collectVirtualTourLinks($realEstate->links, 1);
+            $arrLinks = static::collectVirtualTourLinks($realEstate->links);
 
             if(!count($arrLinks))
             {
                 return;
             }
 
-            // create Template
-            $objVirtualTourGalleryTemplate = new \FrontendTemplate($context->virtualTourGalleryTemplate);
-
-            // In current version is only one value supported
-            $link = $arrLinks[0];
-
-            // set template information
-            $objVirtualTourGalleryTemplate->link = $link;
-            $objVirtualTourGalleryTemplate->class = 'virtual_tour';
-            $objVirtualTourGalleryTemplate->label = Translator::translateLabel('button_virtual_tour');
-            $objVirtualTourGalleryTemplate->addImage = false;
-            $objVirtualTourGalleryTemplate->playerWidth = 100;
-            $objVirtualTourGalleryTemplate->playerHeight = 100;
-
-            // get player size by image size
-            $customImageSize = false;
-
-            if ($context->imgSize != '')
+            foreach ($arrLinks as $link)
             {
-                $size = \StringUtil::deserialize($context->imgSize);
+                // create Template
+                $objVirtualTourGalleryTemplate = new \FrontendTemplate($context->virtualTourGalleryTemplate);
 
-                if ($size[0] > 0 || $size[1] > 0 || is_numeric($size[2]))
-                {
-                    $customImageSize = true;
-                    $objVirtualTourGalleryTemplate->playerWidth = $size[0];
-                    $objVirtualTourGalleryTemplate->playerHeight = $size[1];
-                }
-            }
+                // set template information
+                $objVirtualTourGalleryTemplate->link = $link;
+                $objVirtualTourGalleryTemplate->class = 'virtual_tour';
+                $objVirtualTourGalleryTemplate->label = Translator::translateLabel('button_virtual_tour');
+                $objVirtualTourGalleryTemplate->addImage = false;
+                $objVirtualTourGalleryTemplate->playerWidth = 100;
+                $objVirtualTourGalleryTemplate->playerHeight = 100;
 
-            // add preview image
-            if(!!$context->addVirtualTourPreviewImage)
-            {
-                if($context->virtualTourPreviewImage)
-                {
-                    // add own preview image
-                    $fileId = $context->virtualTourPreviewImage;
-                }
-                else
-                {
-                    // add main image from real estate
-                    $fileId = $realEstate->getMainImage();
-                }
+                // get player size by image size
+                $customImageSize = false;
 
-                if($fileId)
+                if ($context->imgSize != '')
                 {
-                    $objModel = \FilesModel::findByUuid($fileId);
+                    $size = \StringUtil::deserialize($context->imgSize);
 
-                    // Add an image
-                    if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path))
+                    if ($size[0] > 0 || $size[1] > 0 || is_numeric($size[2]))
                     {
-                        $arrImage = array();
-
-                        // Override the default image size
-                        if($customImageSize)
-                        {
-                            $arrImage['size'] = $context->imgSize;
-                        }
-
-                        $arrImage['singleSRC'] = $objModel->path;
-                        $context->addImageToTemplate($objVirtualTourGalleryTemplate, $arrImage, null, null, $objModel);
-
-                        $objVirtualTourGalleryTemplate->addImage = true;
+                        $customImageSize = true;
+                        $objVirtualTourGalleryTemplate->playerWidth = $size[0];
+                        $objVirtualTourGalleryTemplate->playerHeight = $size[1];
                     }
                 }
-            }
 
-            // add slide
-            $arrSlides[] = $objVirtualTourGalleryTemplate->parse();
+                // add preview image
+                if(!!$context->addVirtualTourPreviewImage)
+                {
+                    if($context->virtualTourPreviewImage)
+                    {
+                        // add own preview image
+                        $fileId = $context->virtualTourPreviewImage;
+                    }
+                    else
+                    {
+                        // add main image from real estate
+                        $fileId = $realEstate->getMainImage();
+                    }
+
+                    if($fileId)
+                    {
+                        $objModel = \FilesModel::findByUuid($fileId);
+
+                        // Add an image
+                        if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path))
+                        {
+                            $arrImage = array();
+
+                            // Override the default image size
+                            if($customImageSize)
+                            {
+                                $arrImage['size'] = $context->imgSize;
+                            }
+
+                            $arrImage['singleSRC'] = $objModel->path;
+                            $context->addImageToTemplate($objVirtualTourGalleryTemplate, $arrImage, null, null, $objModel);
+
+                            $objVirtualTourGalleryTemplate->addImage = true;
+                        }
+                    }
+                }
+
+                // add slide
+                $arrSlides[] = $objVirtualTourGalleryTemplate->parse();
+            }
         }
     }
 
