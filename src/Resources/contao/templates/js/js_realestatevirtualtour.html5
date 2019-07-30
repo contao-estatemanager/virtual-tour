@@ -2,6 +2,8 @@
     /**
      * Add virtual tour support for expose module gallery
      */
+    var virtualTourOnClickPreviewEvent = new CustomEvent('virtualtour.onClickPreview', {detail: {type: null, data: null}});
+
     // bind preview image click
     if(!!document.querySelector('figure.preview-image.virtual-tour')) {
         var previewButton = document.querySelectorAll('figure.preview-image.virtual-tour');
@@ -15,6 +17,11 @@
         e.preventDefault();
 
         var iframe = this.nextElementSibling;
+
+        virtualTourOnClickPreviewEvent.detail.type = 'youtube';
+        virtualTourOnClickPreviewEvent.detail.data = e;
+
+        document.dispatchEvent(virtualTourOnClickPreviewEvent);
 
         if(iframe.nodeName === 'IFRAME') {
             iframe.setAttribute("src", iframe.getAttribute('data-src'));

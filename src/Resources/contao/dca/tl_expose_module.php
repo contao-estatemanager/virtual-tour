@@ -20,7 +20,7 @@ if(ContaoEstateManager\VirtualTour\AddonManager::valid()){
     // Add field
     array_insert($GLOBALS['TL_DCA']['tl_expose_module']['palettes'], -1, array
     (
-        'virtualTour'  => '{title_legend},name,headline,type;{settings_legend},text,hideOnEmpty;{template_legend:hide},customTpl,virtualTourTemplate;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID'
+        'virtualTour'  => '{title_legend},name,headline,type;{settings_legend},text,hideOnEmpty;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID'
     ));
 
     // Add fields
@@ -39,16 +39,6 @@ if(ContaoEstateManager\VirtualTour\AddonManager::valid()){
             'inputType'               => 'fileTree',
             'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'tl_class'=>'clr'),
             'sql'                     => "binary(16) NULL"
-        ),
-        'virtualTourTemplate' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_expose_module']['virtualTourTemplate'],
-            'default'                 => 'expose_mod_virtual_tour',
-            'exclude'                 => true,
-            'inputType'               => 'select',
-            'options_callback'        => array('tl_expose_module_estate_manager_virtual_tour', 'getVirtualTourTemplates'),
-            'eval'                    => array('tl_class'=>'w50'),
-            'sql'                     => "varchar(64) NOT NULL default ''"
         ),
         'virtualTourGalleryTemplate' => array
         (
@@ -96,16 +86,6 @@ class tl_expose_module_estate_manager_virtual_tour extends \Backend
     {
         parent::__construct();
         $this->import('BackendUser', 'User');
-    }
-
-    /**
-     * Return all virtual tour templates as array
-     *
-     * @return array
-     */
-    public function getVirtualTourTemplates()
-    {
-        return $this->getTemplateGroup('expose_mod_virtual_tour_');
     }
 
     /**
