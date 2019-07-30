@@ -203,7 +203,7 @@ class VirtualTour
             }
         }
 
-        if ($realEstate->tour3d)
+        if ($realEstate->tour3d && $max !== null && $max <= $index)
         {
             $arrLinks[] = $realEstate->tour3d;
         }
