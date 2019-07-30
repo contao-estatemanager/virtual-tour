@@ -58,7 +58,7 @@ class VirtualTour
     {
         if ($module === 'virtualTour')
         {
-            $arrLinks = static::collectVirtualTourLinks($realEstate, 1);
+            $arrLinks = static::collectVirtualTourLinks($realEstate);
 
             if(!count($arrLinks))
             {
