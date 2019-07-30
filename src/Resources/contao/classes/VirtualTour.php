@@ -25,7 +25,7 @@ class VirtualTour
     {
         if (!!$context->addVirtualTour)
         {
-            $arrLinks = static::collectVirtualTourLinks($realEstate->links, 1);
+            $arrLinks = static::collectVirtualTourLinks($realEstate, 1);
 
             if(!count($arrLinks))
             {
@@ -58,7 +58,7 @@ class VirtualTour
     {
         if ($module === 'virtualTour')
         {
-            $arrLinks = static::collectVirtualTourLinks($realEstate->links, 1);
+            $arrLinks = static::collectVirtualTourLinks($realEstate, 1);
 
             if(!count($arrLinks))
             {
@@ -151,7 +151,7 @@ class VirtualTour
             return;
         }
 
-        $arrLinks = static::collectVirtualTourLinks($realEstate->links, 1);
+        $arrLinks = static::collectVirtualTourLinks($realEstate, 1);
 
         if (in_array('virtualTour', $tokens) && count($arrLinks))
         {
@@ -175,32 +175,37 @@ class VirtualTour
      * - 3d. Sub-Domains
      * - Ogulo
      *
-     * @param $links
+     * @param $realEstate
      * @param null $max
      *
      * @return array
      */
-    public static function collectVirtualTourLinks($links, $max=null)
+    public static function collectVirtualTourLinks($realEstate, $max=null)
     {
         $arrLinks = array();
 
         $index = 1;
 
-        if(!$links)
-        {
-            return $arrLinks;
-        }
+        $links = $realEstate->links;
 
-        foreach ($links as $link)
+        if ($links)
         {
-            if(preg_match('/ogulo|3d\./', $link) === 1)
+            foreach ($links as $link)
             {
-                $arrLinks[] = $link;
+                if(preg_match('/ogulo|3d\./', $link) === 1)
+                {
+                    $arrLinks[] = $link;
 
-                if ($max !== null && $max === $index++){
-                    break;
+                    if ($max !== null && $max === $index++){
+                        break;
+                    }
                 }
             }
+        }
+
+        if ($realEstate->tour3d)
+        {
+            $arrLinks[] = $realEstate->tour3d;
         }
 
         return $arrLinks;

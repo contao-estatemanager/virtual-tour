@@ -11,7 +11,6 @@
 declare(strict_types=1);
 
 
-
 namespace ContaoEstateManager\VirtualTour;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;

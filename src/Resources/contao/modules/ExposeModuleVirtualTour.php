@@ -54,7 +54,7 @@ class ExposeModuleVirtualTour extends ExposeModule
      */
     protected function compile()
     {
-        $arrLinks = VirtualTour::collectVirtualTourLinks($this->realEstate->links, 1);
+        $arrLinks = VirtualTour::collectVirtualTourLinks($this->realEstate, 1);
 
         if(!count($arrLinks))
         {
