@@ -24,7 +24,7 @@ class ExposeModuleVirtualTour extends ExposeModule
      * Template
      * @var string
      */
-    protected $strTemplate = 'expose_mod_virtual_tour';
+    protected $strTemplate = 'expose_mod_virtualTour';
 
     /**
      * Do not display the module if there are no real etates
