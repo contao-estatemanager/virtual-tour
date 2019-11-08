@@ -1,42 +1,33 @@
 <?xml version="1.0" ?>
 <xliff version="1.1">
-  <file datatype="php" original="src/Resources/contao/languages/en/tl_expose_module.php" source-language="en" target-language="de">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_expose_module.php" source-language="en">
     <body>
       <trans-unit id="tl_expose_module.virtual_tour_legend">
         <source>Virtual tour settings</source>
-        <target>Virtueller-Rundgang Einstellungen</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.addVirtualTourPreviewImage.0">
         <source>Use thumbnail image</source>
-        <target>Vorschaubild verwenden</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.addVirtualTourPreviewImage.1">
         <source>Displays a thumbnail image. If no image has been selected, the title picture of the real estate is displayed.</source>
-        <target>Gibt ein Vorschaubild aus. Sofern kein eigenes Bild ausgewählt wurde, wird das Titelbild der Immobilie ausgegeben.</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.virtualTourPreviewImage.0">
         <source>Own thumbnail</source>
-        <target>Eigenes Vorschaubild</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.virtualTourPreviewImage.1">
         <source>Here you can define your own thumbnail.</source>
-        <target>Hier können Sie ein eigenes Vorschaubild definieren.</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.virtualTourGalleryTemplate.0">
         <source>Virtual tours gallery template</source>
-        <target>Virtuelle-Rundgänge Galerie-Template</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.virtualTourGalleryTemplate.1">
         <source>Here you can overwrite the default template.</source>
-        <target>Hier können Sie das Standard-Template überschreiben.</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.virtualTourTemplate.0">
         <source>Virtual tours template</source>
-        <target>Virtuelle-Rundgänge Template</target>
       </trans-unit>
       <trans-unit id="tl_expose_module.virtualTourTemplate.1">
         <source>Here you can overwrite the default template.</source>
-        <target>Hier können Sie das Standard-Template überschreiben.</target>
       </trans-unit>
     </body>
   </file>
