@@ -10,6 +10,9 @@
 
 namespace ContaoEstateManager\VirtualTour;
 
+use Contao\FilesModel;
+use Contao\FrontendTemplate;
+use Contao\StringUtil;
 use ContaoEstateManager\Translator;
 
 class VirtualTour
@@ -33,7 +36,7 @@ class VirtualTour
             }
 
             // create Template
-            $objVirtualTourTemplate = new \FrontendTemplate($context->realEstateVirtualTourTemplate);
+            $objVirtualTourTemplate = new FrontendTemplate($context->realEstateVirtualTourTemplate);
 
             // In current version is only one value supported
             $link = $arrLinks[0];
@@ -68,7 +71,7 @@ class VirtualTour
             foreach ($arrLinks as $link)
             {
                 // create Template
-                $objVirtualTourGalleryTemplate = new \FrontendTemplate($context->virtualTourGalleryTemplate);
+                $objVirtualTourGalleryTemplate = new FrontendTemplate($context->virtualTourGalleryTemplate);
 
                 // set template information
                 $objVirtualTourGalleryTemplate->link = $link;
@@ -83,7 +86,7 @@ class VirtualTour
 
                 if ($context->imgSize != '')
                 {
-                    $size = \StringUtil::deserialize($context->imgSize);
+                    $size = StringUtil::deserialize($context->imgSize);
 
                     if ($size[0] > 0 || $size[1] > 0 || is_numeric($size[2]))
                     {
@@ -109,7 +112,7 @@ class VirtualTour
 
                     if($fileId)
                     {
-                        $objModel = \FilesModel::findByUuid($fileId);
+                        $objModel = FilesModel::findByUuid($fileId);
 
                         // Add an image
                         if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path))
@@ -145,7 +148,7 @@ class VirtualTour
      */
     public function addStatusToken(&$objTemplate, $realEstate, $context)
     {
-        $tokens = \StringUtil::deserialize($context->statusTokens);
+        $tokens = StringUtil::deserialize($context->statusTokens);
 
         if(!$tokens){
             return;
