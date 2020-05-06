@@ -17,7 +17,7 @@ if(ContaoEstateManager\VirtualTour\AddonManager::valid()){
         'sql'                       => "char(1) NOT NULL default '0'",
     );
 
-    $GLOBALS['TL_DCA']['tl_module']['fields']['addVirtualTour']['realEstateVirtualTourTemplate'] = array(
+    $GLOBALS['TL_DCA']['tl_module']['fields']['realEstateVirtualTourTemplate'] = array(
         'label'                   => &$GLOBALS['TL_LANG']['tl_module']['realEstateVirtualTourTemplate'],
         'exclude'                 => true,
         'inputType'               => 'select',
