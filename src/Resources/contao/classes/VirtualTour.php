@@ -24,13 +24,13 @@ class VirtualTour
      * @param $realEstate
      * @param $context
      */
-    public function parseRealEstate(&$objTemplate, $realEstate, $context)
+    public function parseRealEstate(&$objTemplate, $realEstate, $context): void
     {
         if (!!$context->addVirtualTour)
         {
             $arrLinks = static::collectVirtualTourLinks($realEstate, 1);
 
-            if(!count($arrLinks))
+            if($arrLinks === null)
             {
                 return;
             }
@@ -53,17 +53,18 @@ class VirtualTour
      * Parse virtual tour gallery template and add them to slides
      *
      * @param $objTemplate
+     * @param $module
      * @param $arrSlides
      * @param $realEstate
      * @param $context
      */
-    public function parseGallerySlide($objTemplate, $module, &$arrSlides, $realEstate, $context)
+    public function parseGallerySlide($objTemplate, $module, &$arrSlides, $realEstate, $context): void
     {
         if ($module === 'virtualTour')
         {
             $arrLinks = static::collectVirtualTourLinks($realEstate);
 
-            if(!count($arrLinks))
+            if($arrLinks === null)
             {
                 return;
             }
@@ -146,7 +147,7 @@ class VirtualTour
      * @param $realEstate
      * @param $context
      */
-    public function addStatusToken(&$objTemplate, $realEstate, $context)
+    public function addStatusToken(&$objTemplate, $realEstate, $context): void
     {
         $tokens = StringUtil::deserialize($context->statusTokens);
 
@@ -156,7 +157,7 @@ class VirtualTour
 
         $arrLinks = static::collectVirtualTourLinks($realEstate, 1);
 
-        if (in_array('virtualTour', $tokens) && count($arrLinks))
+        if ($arrLinks !== null && in_array('virtualTour', $tokens))
         {
             $objTemplate->arrStatusTokens = array_merge(
                 $objTemplate->arrStatusTokens,
@@ -186,9 +187,9 @@ class VirtualTour
      *
      * @return array
      */
-    public static function collectVirtualTourLinks($realEstate, $max=null)
+    public static function collectVirtualTourLinks($realEstate, $max=null): ?array
     {
-        $arrLinks = array();
+        $arrLinks = null;
 
         $index = 1;
 

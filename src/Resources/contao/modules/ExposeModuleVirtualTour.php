@@ -58,16 +58,17 @@ class ExposeModuleVirtualTour extends ExposeModule
     {
         $arrLinks = VirtualTour::collectVirtualTourLinks($this->realEstate, 1);
 
-        if(!count($arrLinks))
+        if($arrLinks === null)
         {
             $this->isEmpty = true;
         }
-
-        // In current version is only one value supported
-        $link = $arrLinks[0];
+        else
+        {
+            // In current version is only one value supported
+            $this->Template->link = $arrLinks[0];
+        }
 
         // set template information
-        $this->Template->link = $link;
         $this->Template->label = Translator::translateExpose('button_virtual_tour');
     }
 }
