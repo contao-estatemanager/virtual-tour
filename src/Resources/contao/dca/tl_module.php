@@ -12,6 +12,7 @@ if(ContaoEstateManager\VirtualTour\AddonManager::valid()){
     $GLOBALS['TL_DCA']['tl_module']['fields']['addVirtualTour'] = array
     (
         'label'                     => &$GLOBALS['TL_LANG']['tl_module']['addVirtualTour'],
+        'exclude'                   => true,
         'inputType'                 => 'checkbox',
         'eval'                      => array('tl_class' => 'w50 m12'),
         'sql'                       => "char(1) NOT NULL default '0'",
