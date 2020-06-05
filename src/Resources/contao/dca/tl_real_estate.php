@@ -13,6 +13,7 @@ if(ContaoEstateManager\VirtualTour\AddonManager::valid()){
     (
 
         'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['tour3d'],
+        'exclude'                   => true,
         'inputType'                 => 'text',
         'eval'                      => array('maxlength'=>255, 'tl_class'=>'w50'),
         'sql'                       => "varchar(255) NOT NULL default ''"
