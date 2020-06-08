@@ -10,6 +10,9 @@
 
 namespace ContaoEstateManager\VirtualTour;
 
+use Contao\FilesModel;
+use Contao\FrontendTemplate;
+use Contao\StringUtil;
 use ContaoEstateManager\Translator;
 
 class VirtualTour
@@ -21,19 +24,19 @@ class VirtualTour
      * @param $realEstate
      * @param $context
      */
-    public function parseRealEstate(&$objTemplate, $realEstate, $context)
+    public function parseRealEstate(&$objTemplate, $realEstate, $context): void
     {
         if (!!$context->addVirtualTour)
         {
             $arrLinks = static::collectVirtualTourLinks($realEstate, 1);
 
-            if(!count($arrLinks))
+            if($arrLinks === null)
             {
                 return;
             }
 
             // create Template
-            $objVirtualTourTemplate = new \FrontendTemplate($context->realEstateVirtualTourTemplate);
+            $objVirtualTourTemplate = new FrontendTemplate($context->realEstateVirtualTourTemplate);
 
             // In current version is only one value supported
             $link = $arrLinks[0];
@@ -50,17 +53,18 @@ class VirtualTour
      * Parse virtual tour gallery template and add them to slides
      *
      * @param $objTemplate
+     * @param $module
      * @param $arrSlides
      * @param $realEstate
      * @param $context
      */
-    public function parseGallerySlide($objTemplate, $module, &$arrSlides, $realEstate, $context)
+    public function parseGallerySlide($objTemplate, $module, &$arrSlides, $realEstate, $context): void
     {
         if ($module === 'virtualTour')
         {
             $arrLinks = static::collectVirtualTourLinks($realEstate);
 
-            if(!count($arrLinks))
+            if($arrLinks === null)
             {
                 return;
             }
@@ -68,7 +72,7 @@ class VirtualTour
             foreach ($arrLinks as $link)
             {
                 // create Template
-                $objVirtualTourGalleryTemplate = new \FrontendTemplate($context->virtualTourGalleryTemplate);
+                $objVirtualTourGalleryTemplate = new FrontendTemplate($context->virtualTourGalleryTemplate);
 
                 // set template information
                 $objVirtualTourGalleryTemplate->link = $link;
@@ -83,7 +87,7 @@ class VirtualTour
 
                 if ($context->imgSize != '')
                 {
-                    $size = \StringUtil::deserialize($context->imgSize);
+                    $size = StringUtil::deserialize($context->imgSize);
 
                     if ($size[0] > 0 || $size[1] > 0 || is_numeric($size[2]))
                     {
@@ -109,7 +113,7 @@ class VirtualTour
 
                     if($fileId)
                     {
-                        $objModel = \FilesModel::findByUuid($fileId);
+                        $objModel = FilesModel::findByUuid($fileId);
 
                         // Add an image
                         if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path))
@@ -139,31 +143,19 @@ class VirtualTour
     /**
      * Add status token for virtual tour objects
      *
-     * @param $objTemplate
-     * @param $realEstate
+     * @param $validStatusToken
+     * @param $arrStatusTokens
      * @param $context
      */
-    public function addStatusToken(&$objTemplate, $realEstate, $context)
+    public function addStatusToken($validStatusToken, &$arrStatusTokens, $context): void
     {
-        $tokens = \StringUtil::deserialize($context->statusTokens);
+        $arrLinks = static::collectVirtualTourLinks($context, 1);
 
-        if(!$tokens){
-            return;
-        }
-
-        $arrLinks = static::collectVirtualTourLinks($realEstate, 1);
-
-        if (in_array('virtualTour', $tokens) && count($arrLinks))
+        if (null !== $arrLinks && in_array('virtualTour', $validStatusToken))
         {
-            $objTemplate->arrStatusTokens = array_merge(
-                $objTemplate->arrStatusTokens,
-                array
-                (
-                    array(
-                        'value' => Translator::translateValue('virtualTourObject'),
-                        'class' => 'virtualTour'
-                    )
-                )
+            $arrStatusTokens[] = array(
+                'value' => Translator::translateValue('virtualTourObject'),
+                'class' => 'virtualTour'
             );
         }
     }
@@ -183,9 +175,9 @@ class VirtualTour
      *
      * @return array
      */
-    public static function collectVirtualTourLinks($realEstate, $max=null)
+    public static function collectVirtualTourLinks($realEstate, $max=null): ?array
     {
-        $arrLinks = array();
+        $arrLinks = null;
 
         $index = 1;
 

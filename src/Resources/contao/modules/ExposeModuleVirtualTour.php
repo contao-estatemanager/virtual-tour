@@ -10,8 +10,10 @@
 
 namespace ContaoEstateManager\VirtualTour;
 
+use Contao\BackendTemplate;
 use ContaoEstateManager\ExposeModule;
 use ContaoEstateManager\Translator;
+use Patchwork\Utf8;
 
 /**
  * Expose module "virtual tour".
@@ -35,7 +37,7 @@ class ExposeModuleVirtualTour extends ExposeModule
     {
         if (TL_MODE == 'BE')
         {
-            $objTemplate = new \BackendTemplate('be_wildcard');
+            $objTemplate = new BackendTemplate('be_wildcard');
             $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['virtual_tour'][0]) . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
@@ -56,16 +58,17 @@ class ExposeModuleVirtualTour extends ExposeModule
     {
         $arrLinks = VirtualTour::collectVirtualTourLinks($this->realEstate, 1);
 
-        if(!count($arrLinks))
+        if($arrLinks === null)
         {
             $this->isEmpty = true;
         }
-
-        // In current version is only one value supported
-        $link = $arrLinks[0];
+        else
+        {
+            // In current version is only one value supported
+            $this->Template->link = $arrLinks[0];
+        }
 
         // set template information
-        $this->Template->link = $link;
         $this->Template->label = Translator::translateExpose('button_virtual_tour');
     }
 }

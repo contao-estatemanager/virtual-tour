@@ -5,8 +5,9 @@
 <div class="virtual-tour-description">
     <?=$this->text?>
 </div>
-<div class="virtual-tour-link">
-    <a href="<?=$this->link?>" target="_blank" rel="nofollow"><?=$this->label?></a>
-</div>
-
+<?php if($this->link): ?>
+    <div class="virtual-tour-link">
+        <a href="<?=$this->link?>" target="_blank" rel="nofollow"><?=$this->label?></a>
+    </div>
+<?php endif; ?>
 <?php $this->endblock(); ?>

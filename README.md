@@ -1,5 +1,6 @@
-# Virtual Tour Extension for Contao EstateManager
-
+# Virtual-Tour Extension for Contao EstateManager
+The Virtual-Tour extension for Contao EstateManager allows the integration and display of virtual tours of various providers.
+        
 # License
 Copyright (c) 2019 Contao EstateManager
 

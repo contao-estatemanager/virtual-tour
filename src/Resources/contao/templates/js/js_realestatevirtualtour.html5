@@ -18,7 +18,7 @@
 
         var iframe = this.nextElementSibling;
 
-        virtualTourOnClickPreviewEvent.detail.type = 'youtube';
+        virtualTourOnClickPreviewEvent.detail.type = 'virtual-tour';
         virtualTourOnClickPreviewEvent.detail.data = e;
 
         document.dispatchEvent(virtualTourOnClickPreviewEvent);

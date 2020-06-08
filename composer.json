@@ -2,13 +2,18 @@
   "name":"contao-estatemanager/virtual-tour",
   "type":"contao-bundle",
   "description":"Virtual Tour Extension for Contao EstateManager",
-  "keywords":["contao","estatemanager","real estate","estate","property","virtual tour"],
+  "keywords":["contao", "immobilien", "manager", "property", "realestate", "virtual", "tour", "3d"],
   "homepage":"https://www.contao-estatemanager.com/",
   "license":"proprietary",
   "authors":[
     {
-      "name":"Oveleon",
-      "homepage":"https://www.oveleon.de/",
+      "name":"Daniele Sciannimanica",
+      "homepage":"https://github.com/doishub",
+      "role":"Developer"
+    },
+    {
+      "name":"Fabian Ekert",
+      "homepage":"https://github.com/eki89",
       "role":"Developer"
     }
   ],

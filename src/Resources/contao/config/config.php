@@ -9,18 +9,14 @@
  */
 
 // ESTATEMANAGER
-$GLOBALS['TL_ESTATEMANAGER_ADDONS'][] = array('ContaoEstateManager\\VirtualTour', 'AddonManager');
+$GLOBALS['TL_ESTATEMANAGER_ADDONS'][] = array('ContaoEstateManager\VirtualTour', 'AddonManager');
 
 if(ContaoEstateManager\VirtualTour\AddonManager::valid()) {
     // Add expose module
-    array_insert($GLOBALS['FE_EXPOSE_MOD']['media'], -1, array
-    (
-        'virtualTour' => '\\ContaoEstateManager\\VirtualTour\\ExposeModuleVirtualTour',
-    ));
+    $GLOBALS['FE_EXPOSE_MOD']['media']['virtualTour'] = 'ContaoEstateManager\VirtualTour\ExposeModuleVirtualTour';
 
-    // HOOKS
-    $GLOBALS['TL_HOOKS']['parseRealEstate'][] = array('ContaoEstateManager\\VirtualTour\\VirtualTour', 'parseRealEstate');
-    $GLOBALS['TL_HOOKS']['parseRealEstate'][] = array('ContaoEstateManager\\VirtualTour\\VirtualTour', 'addStatusToken');
-    $GLOBALS['TL_HOOKS']['parseSlideExposeGallery'][] = array('ContaoEstateManager\\VirtualTour\\VirtualTour', 'parseGallerySlide');
-    $GLOBALS['TL_HOOKS']['compileExposeStatusToken'][] = array('ContaoEstateManager\\VirtualTour\\VirtualTour', 'addStatusToken');
+    // Hooks
+    $GLOBALS['TL_HOOKS']['parseRealEstate'][] = array('ContaoEstateManager\VirtualTour\VirtualTour', 'parseRealEstate');
+    $GLOBALS['TL_HOOKS']['getStatusTokens'][] = array('ContaoEstateManager\VirtualTour\VirtualTour', 'addStatusToken');
+    $GLOBALS['TL_HOOKS']['parseSlideExposeGallery'][] = array('ContaoEstateManager\VirtualTour\VirtualTour', 'parseGallerySlide');
 }
