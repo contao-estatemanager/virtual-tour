@@ -17,10 +17,16 @@ use ContaoEstateManager\EstateManager;
 class AddonManager
 {
     /**
-     * Addon name
+     * Bundle name
      * @var string
      */
-    public static $name = 'Virtual Tour';
+    public static $bundle = 'EstateManagerVirtualTour';
+
+    /**
+     * Package
+     * @var string
+     */
+    public static $package = 'contao-estatemanager/virtual-tour';
 
     /**
      * Addon config key
