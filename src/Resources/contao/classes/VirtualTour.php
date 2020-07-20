@@ -169,6 +169,7 @@ class VirtualTour
      * - 360grad. Sub-Domains
      * - Ogulo
      * - Immoviewer
+     * - Matterport
      *
      * @param $realEstate
      * @param null $max
@@ -187,7 +188,7 @@ class VirtualTour
         {
             foreach ($links as $link)
             {
-                if(preg_match('/ogulo|3d\.|360\.|360grad\.|app\.immoviewer/', $link) === 1)
+                if(preg_match('/ogulo|3d\.|360\.|360grad\.|app\.immoviewer|my\.matterport/', $link) === 1)
                 {
                     $arrLinks[] = $link;
 
