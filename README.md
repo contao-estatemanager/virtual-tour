@@ -4,4 +4,5 @@ The Virtual-Tour extension for Contao EstateManager allows the integration and d
 # License
 Copyright © 2020 Contao EstateManager
 
+🎫 [Get license](https://www.contao-estatemanager.com/de/erweiterungen/virtuelle-tour.html) \
 ⚖ [License agreement](https://www.contao-estatemanager.com/de/lizenzbedingungen.html) (German)
