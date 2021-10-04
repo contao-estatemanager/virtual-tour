@@ -1,11 +1,14 @@
 <?php
-/**
+
+declare(strict_types=1);
+
+/*
  * This file is part of Contao EstateManager.
  *
- * @link      https://www.contao-estatemanager.com/
- * @source    https://github.com/contao-estatemanager/virtual-tour
- * @copyright Copyright (c) 2019  Oveleon GbR (https://www.oveleon.de)
- * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
+ * @see        https://www.contao-estatemanager.com/
+ * @source     https://github.com/contao-estatemanager/virtual-tour
+ * @copyright  Copyright (c) 2021 Oveleon GbR (https://www.oveleon.de)
+ * @license    https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
 namespace ContaoEstateManager\VirtualTour;
@@ -18,7 +21,7 @@ use ContaoEstateManager\Translator;
 class VirtualTour
 {
     /**
-     * Parse real estate template and add video extension
+     * Parse real estate template and add video extension.
      *
      * @param $objTemplate
      * @param $realEstate
@@ -26,11 +29,11 @@ class VirtualTour
      */
     public function parseRealEstate(&$objTemplate, $realEstate, $context): void
     {
-        if (!!$context->addVirtualTour)
+        if ((bool) $context->addVirtualTour)
         {
             $arrLinks = static::collectVirtualTourLinks($realEstate, 1);
 
-            if($arrLinks === null)
+            if (null === $arrLinks)
             {
                 return;
             }
@@ -50,7 +53,7 @@ class VirtualTour
     }
 
     /**
-     * Parse virtual tour gallery template and add them to slides
+     * Parse virtual tour gallery template and add them to slides.
      *
      * @param $objTemplate
      * @param $module
@@ -60,11 +63,11 @@ class VirtualTour
      */
     public function parseGallerySlide($objTemplate, $module, &$arrSlides, $realEstate, $context): void
     {
-        if ($module === 'virtualTour')
+        if ('virtualTour' === $module)
         {
             $arrLinks = static::collectVirtualTourLinks($realEstate);
 
-            if($arrLinks === null)
+            if (null === $arrLinks)
             {
                 return;
             }
@@ -85,7 +88,7 @@ class VirtualTour
                 // get player size by image size
                 $customImageSize = false;
 
-                if ($context->imgSize != '')
+                if ('' !== $context->imgSize)
                 {
                     $size = StringUtil::deserialize($context->imgSize);
 
@@ -98,9 +101,9 @@ class VirtualTour
                 }
 
                 // add preview image
-                if(!!$context->addVirtualTourPreviewImage)
+                if ((bool) $context->addVirtualTourPreviewImage)
                 {
-                    if($context->virtualTourPreviewImage)
+                    if ($context->virtualTourPreviewImage)
                     {
                         // add own preview image
                         $fileId = $context->virtualTourPreviewImage;
@@ -111,17 +114,17 @@ class VirtualTour
                         $fileId = $realEstate->getMainImage();
                     }
 
-                    if($fileId)
+                    if ($fileId)
                     {
                         $objModel = FilesModel::findByUuid($fileId);
 
                         // Add an image
-                        if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path))
+                        if (null !== $objModel && is_file(TL_ROOT.'/'.$objModel->path))
                         {
-                            $arrImage = array();
+                            $arrImage = [];
 
                             // Override the default image size
-                            if($customImageSize)
+                            if ($customImageSize)
                             {
                                 $arrImage['size'] = $context->imgSize;
                             }
@@ -141,7 +144,7 @@ class VirtualTour
     }
 
     /**
-     * Add status token for virtual tour objects
+     * Add status token for virtual tour objects.
      *
      * @param $validStatusToken
      * @param $arrStatusTokens
@@ -151,17 +154,17 @@ class VirtualTour
     {
         $arrLinks = static::collectVirtualTourLinks($context, 1);
 
-        if (null !== $arrLinks && in_array('virtualTour', $validStatusToken))
+        if (null !== $arrLinks && \in_array('virtualTour', $validStatusToken, true))
         {
-            $arrStatusTokens[] = array(
+            $arrStatusTokens[] = [
                 'value' => Translator::translateValue('virtualTourObject'),
-                'class' => 'virtualTour'
-            );
+                'class' => 'virtualTour',
+            ];
         }
     }
 
     /**
-     * Return virtual tour links as array
+     * Return virtual tour links as array.
      *
      * Supported vendors:
      * - 3d. Sub-Domains
@@ -176,7 +179,7 @@ class VirtualTour
      *
      * @return array
      */
-    public static function collectVirtualTourLinks($realEstate, $max=null): ?array
+    public static function collectVirtualTourLinks($realEstate, $max = null): ?array
     {
         $arrLinks = null;
 
@@ -188,18 +191,19 @@ class VirtualTour
         {
             foreach ($links as $link)
             {
-                if(preg_match('/ogulo|3d\.|360\.|360grad\.|app\.immoviewer|my\.matterport/', $link) === 1)
+                if (1 === preg_match('/ogulo|3d\.|360\.|360grad\.|app\.immoviewer|my\.matterport/', $link))
                 {
                     $arrLinks[] = $link;
 
-                    if ($max !== null && $max === $index++){
+                    if (null !== $max && $max === $index++)
+                    {
                         break;
                     }
                 }
             }
         }
 
-        if ($realEstate->tour3d && $max !== null && $max <= $index)
+        if ($realEstate->tour3d && null !== $max && $max <= $index)
         {
             $arrLinks[] = $realEstate->tour3d;
         }
