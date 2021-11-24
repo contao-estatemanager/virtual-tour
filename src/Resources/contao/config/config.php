@@ -19,7 +19,7 @@ use ContaoEstateManager\VirtualTour\AddonManager;
 if (AddonManager::valid())
 {
     // Add expose module
-    $GLOBALS['FE_EXPOSE_MOD']['media']['virtualTour'] = 'ContaoEstateManager\VirtualTour\ExposeModuleVirtualTour';
+    $GLOBALS['CEM_FE_EXPOSE_MOD']['media']['virtualTour'] = 'ContaoEstateManager\VirtualTour\ExposeModuleVirtualTour';
 
     // Hooks
     $GLOBALS['TL_HOOKS']['parseRealEstate'][] = ['ContaoEstateManager\VirtualTour\VirtualTour', 'parseRealEstate'];
