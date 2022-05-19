@@ -15,6 +15,7 @@ declare(strict_types=1);
 $GLOBALS['TL_ESTATEMANAGER_ADDONS'][] = ['ContaoEstateManager\VirtualTour', 'AddonManager'];
 
 use ContaoEstateManager\VirtualTour\AddonManager;
+use ContaoEstateManager\VirtualTour\VirtualTour;
 
 if (AddonManager::valid())
 {
@@ -22,9 +23,8 @@ if (AddonManager::valid())
     $GLOBALS['CEM_FE_EXPOSE_MOD']['media']['virtualTour'] = 'ContaoEstateManager\VirtualTour\ExposeModuleVirtualTour';
 
     // Hooks
-    $GLOBALS['TL_HOOKS']['parseRealEstate'][] = ['ContaoEstateManager\VirtualTour\VirtualTour', 'parseRealEstate'];
-    $GLOBALS['TL_HOOKS']['getStatusTokens'][] = ['ContaoEstateManager\VirtualTour\VirtualTour', 'addStatusToken'];
-    $GLOBALS['TL_HOOKS']['parseSlideExposeGallery'][] = ['ContaoEstateManager\VirtualTour\VirtualTour', 'parseGallerySlide'];
-
-    $GLOBALS['TL_HOOKS']['cemModulePreparation'][] = ['ContaoEstateManager\VirtualTour\VirtualTour', 'extendModulePreparation'];
+    $GLOBALS['CEM_HOOKS']['parseRealEstate'][] = [VirtualTour::class, 'parseRealEstate'];
+    $GLOBALS['CEM_HOOKS']['getStatusTokens'][] = [VirtualTour::class, 'addStatusToken'];
+    $GLOBALS['CEM_HOOKS']['parseSlideExposeGallery'][] = [VirtualTour::class, 'parseGallerySlide'];
+    $GLOBALS['CEM_HOOKS']['extendTemplateModule'][] = [VirtualTour::class, 'extendModulePreparation'];
 }
