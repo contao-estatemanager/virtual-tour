@@ -20,11 +20,10 @@ use ContaoEstateManager\VirtualTour\VirtualTour;
 if (AddonManager::valid())
 {
     // Add expose module
-    $GLOBALS['CEM_FE_EXPOSE_MOD']['media']['virtualTour'] = 'ContaoEstateManager\VirtualTour\ExposeModuleVirtualTour';
+    $GLOBALS['FE_EXPOSE_MOD']['media']['virtualTour'] = 'ContaoEstateManager\VirtualTour\ExposeModuleVirtualTour';
 
     // Hooks
-    $GLOBALS['CEM_HOOKS']['parseRealEstate'][] = [VirtualTour::class, 'parseRealEstate'];
-    $GLOBALS['CEM_HOOKS']['getStatusTokens'][] = [VirtualTour::class, 'addStatusToken'];
-    $GLOBALS['CEM_HOOKS']['parseSlideExposeGallery'][] = [VirtualTour::class, 'parseGallerySlide'];
-    $GLOBALS['CEM_HOOKS']['extendTemplateModule'][] = [VirtualTour::class, 'extendModulePreparation'];
+    $GLOBALS['TL_HOOKS']['parseRealEstate'][] = [VirtualTour::class, 'parseRealEstate'];
+    $GLOBALS['TL_HOOKS']['getStatusTokens'][] = [VirtualTour::class, 'addStatusToken'];
+    $GLOBALS['TL_HOOKS']['parseSlideExposeGallery'][] = [VirtualTour::class, 'parseGallerySlide'];
 }
